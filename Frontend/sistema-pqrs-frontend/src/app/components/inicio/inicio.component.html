@@ -1,0 +1,29 @@
+<div class="container text-center d-flex justify-content-center align-items-center vh-100 flex-column flex-md-row">
+  <h2 class="mb-4">Bienvenido al sistema de PQRS</h2>
+
+  <div class="d-grid gap-3 col-6 mx-auto">
+    <button class="btn btn-admin text-white btn-lg" (click)="irAdmin()">Ingresar como Administrador</button>
+
+    <button class="btn btn-dark btn-lg" data-bs-toggle="modal" data-bs-target="#usuarioModal">
+      Ingresar como Usuario
+    </button>
+  </div>
+
+  <div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="usuarioModalLabel">Acceso para Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>¿Qué deseas hacer?</p>
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-primary" (click)="irCliente('crear')" data-bs-dismiss="modal">Crear PQRS</button>
+            <button class="btn btn-outline-secondary" (click)="irCliente('consultar')" data-bs-dismiss="modal">Consultar PQRS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

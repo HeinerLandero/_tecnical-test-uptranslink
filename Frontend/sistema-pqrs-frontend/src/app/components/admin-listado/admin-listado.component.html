@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h2>Listado de PQRS</h2>
+
+  <div *ngIf="cargando" class="text-muted">Cargando...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <table *ngIf="lista.length > 0" class="table table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of lista">
+        <td>{{ item.id }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.tipo }}</td>
+        <td>{{ item.estado }}</td>
+        <td>
+          <button (click)="verDetalle(item.id)" class="btn btn-sm btn-primary">Ver Detalle</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!cargando && lista.length === 0" class="alert alert-info">
+    No hay PQRS registradas aún.
+  </div>
+</div>

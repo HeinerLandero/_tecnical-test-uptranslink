@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2>Enviar PQRS</h2>
+
+  <form [formGroup]="pqrsForm" (ngSubmit)="enviar()" novalidate>
+
+    <div class="mb-3">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control"
+             [class.is-invalid]="pqrsForm.get('nombre')?.invalid && pqrsForm.get('nombre')?.touched">
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control"
+             [class.is-invalid]="pqrsForm.get('email')?.invalid && pqrsForm.get('email')?.touched">
+    </div>
+
+    <div class="mb-3">
+      <label>Tipo</label>
+      <select formControlName="tipo" class="form-control"
+              [class.is-invalid]="pqrsForm.get('tipo')?.invalid && pqrsForm.get('tipo')?.touched">
+        <option value="">-- Selecciona un tipo --</option>
+        <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Descripción</label>
+      <textarea formControlName="descripcion" rows="4" class="form-control"
+                [class.is-invalid]="pqrsForm.get('descripcion')?.invalid && pqrsForm.get('descripcion')?.touched"></textarea>
+    </div>
+    <div class="container d-flex gap-2">
+      <button type="submit" class="btn btn-primary">
+        Enviar
+      </button>
+      <button class="btn btn-danger" (click)="irInicio()">
+        Regresar
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="mensaje" class="mt-3 alert" [ngClass]="{ 'alert-success': enviado, 'alert-danger': !enviado }">
+    {{ mensaje }}
+  </div>
+</div>

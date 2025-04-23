@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h2>Consultar PQRS</h2>
+
+  <div class="mb-3">
+    <label>Email</label>
+    <input type="email" [(ngModel)]="email" class="form-control" placeholder="Introduce tu email">
+  </div>
+
+  <button (click)="buscar()" class="btn btn-primary mb-3">Buscar</button>
+
+  <div *ngIf="buscando" class="text-muted">Buscando...</div>
+
+  <div *ngIf="error" class="alert alert-warning">{{ error }}</div>
+
+  <div *ngIf="resultados.length > 0">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+          <th>Respuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultados">
+          <td>{{ item.tipo }}</td>
+          <td>{{ item.descripcion }}</td>
+          <td>{{ item.estado }}</td>
+          <td>{{ item.respuesta || 'Sin respuesta aún' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
